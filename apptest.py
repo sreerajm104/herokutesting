@@ -13,8 +13,12 @@ apptest = Flask(__name__)
 @apptest.route('/')
 def home():
     return render_template('index.html')
-    # return "Generate Questions"
+    # return "Appian Call Success"
 
+@apptest.route('/appiancall')
+def appiancall():
+    # return render_template('index.html')
+    return "Appian Call Success"
 
 if __name__ == "__main__":
     apptest.run(debug=True)
