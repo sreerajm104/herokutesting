@@ -4,7 +4,7 @@ Created on Mon Feb 22 20:44:41 2021
 
 @author: sree
 """
-from flask import Flask,  render_template
+from flask import Flask,  render_template,request
 
 
 apptest = Flask(__name__)
