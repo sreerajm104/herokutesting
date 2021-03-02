@@ -15,6 +15,15 @@ def home():
     return render_template('index.html')
     # return "Appian Call Success"
 
+@apptest.route('/predict',methods=['POST'])
+def predict():
+    '''
+    For rendering results on HTML GUI
+    '''
+    topic = [x for x in request.form.values()]
+    output = topic[0]      
+    return render_template('index.html', prediction_text=output)
+
 @apptest.route('/appiancall')
 def appiancall():
     # return render_template('index.html')
