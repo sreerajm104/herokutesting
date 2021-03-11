@@ -37,8 +37,8 @@ def predict():
 @apptest.route('/appiancall')
 def appiancall():
     # return render_template('index.html')
-    email = 'processmodeluuido0001e604-162a-8000-49c6-7f0000014e7a@kpmgdemo.appiancloud.com'
-    # email = "processmodeluuido002e604-15f2-8000-49c2-7f0000014e7a@kpmgdemo.appiancloud.com"
+    # email = 'processmodeluuido0001e604-162a-8000-49c6-7f0000014e7a@kpmgdemo.appiancloud.com'
+    email = "processmodeluuido002e604-15f2-8000-49c2-7f0000014e7a@kpmgdemo.appiancloud.com"
     # email = "sreeraj.m04@gmail.com"
 #    message = "This is a reply to appian"
 #    server = smtplib.SMTP("smtp.gmail.com",587)
@@ -52,6 +52,23 @@ def appiancall():
     
     
     return "Appian APIs Call Success"
+
+@apptest.route('/generatefile',methods=['POST'])
+def generatefromfile():
+    '''
+    For rendering results on HTML GUI
+    '''
+    try: 
+        file = request.files['file']
+        file.save(file.filename)    
+        with open(file.filename,'r') as f:    
+            str_text = f.read()
+        output = str_text
+        return output
+        
+    except requests.exceptions.RequestException as e:
+        app.logger.error(f"Error encountered in GenerateFile: {e}")
+        return "Error"
 
 if __name__ == "__main__":
     apptest.run(debug=True)
