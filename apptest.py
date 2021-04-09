@@ -7,7 +7,7 @@ Created on Mon Feb 22 20:44:41 2021
 from flask import Flask,  render_template,request, jsonify, send_file
 #import smtplib
 # from flask_mail import Mail, Message
-import requests
+# import requests
 # import json
 import cv2
 import numpy as np
@@ -77,7 +77,8 @@ def generatefromfile():
         output = str_text
         return output
         
-    except requests.exceptions.RequestException as e:
+    # except requests.exceptions.RequestException as e:
+    except:
         # app.logger.error(f"Error encountered in GenerateFile: {e}")
         return "Error"
 
